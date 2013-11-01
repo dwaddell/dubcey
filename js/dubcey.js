@@ -39,7 +39,8 @@ $(document).ready( function ()
 
       this.$(".signup-form button").attr("disabled", "disabled");
 */
- 			}
+ 			},
+ 			
  	  render: function() {
       this.$el.html(_.template($("#signup-template").html()));
       this.delegateEvents();
