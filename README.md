@@ -1,6 +1,5 @@
 dubcey
 ======
 
-Testing a commit
-
 Fantasy Football Site
+Test website: http://dwaddell.github.io/dubcey/
