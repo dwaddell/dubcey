@@ -10,7 +10,7 @@ $(document).ready( function ()
  var LogInView = Parse.View.extend({
     events: {
       "submit form.login-form": "logIn",
-      "submit form.signup-form": "signUp"
+      "click button.signup-form": "signUp"
     },
 
     el: $(".content"),
@@ -44,7 +44,7 @@ $(document).ready( function ()
     },
 
     signUp: function(e) {
-      var self = this;
+/*      var self = this;
       var username = this.$("#signup-username").val();
       var password = this.$("#signup-password").val();
       
@@ -62,7 +62,8 @@ $(document).ready( function ()
       });
 
       this.$(".signup-form button").attr("disabled", "disabled");
-
+*/
+console.log("I CLICKED THE BUTTON");
       return false;
     },
 
