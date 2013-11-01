@@ -6,6 +6,13 @@ $(document).ready( function ()
 	// ACW 9/3/13 Moved the initialize code to the .ready function
 	Parse.initialize("8SyaVoZSUSwjTpFrq8i4o8otPRbWMLXZ7PtEAgMR", "S7SGiM2ApbQpRkVZn7ixXoMjLkoM9y6SPGo8pdvl");
 
+	var AppState = Parse.Object.extend("AppState", {
+		defaults: {
+		  filter: "login"
+		}
+	});
+
+
 var WelcomeView = Parse.View.extend({
 	events		: {},
 	
@@ -171,6 +178,33 @@ var WelcomeView = Parse.View.extend({
     }
   });
   
-   new AppView;
-//   Parse.history.start();
+
+	var AppRouter = Parse.Router.extend({
+		routes: {
+		  "login": "login",
+		  "signup": "signup",
+		  "welcome": "welcome"
+		},
+
+		initialize: function(options) {
+		},
+
+		login: function() {
+		  state.set({ filter: "login" });
+		},
+
+		signup: function() {
+		  state.set({ filter: "signup" });
+		},
+
+		welcome: function() {
+		  state.set({ filter: "welcome" });
+		}
+	});
+
+	var state = new AppState;
+
+	new AppRouter;
+	new AppView;
+	Parse.history.start();
 });
