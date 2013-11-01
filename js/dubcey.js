@@ -64,7 +64,20 @@ var WelcomeView = Parse.View.extend({
  		},
  			
  	  	render: function() {
-      		this.$el.html(_.template($("#signup-template").html()));
+ 	  		var sTemplate;
+ 	  		
+ 	  		sTemplate='<header id="header"></header>'+
+  				'<div class="signup">'+	
+					'<form class="signup-form">'+
+						'<h2>Sign Up</h2>'+
+						'<div class="error" style="display:none"></div>'+
+						'<input type="text" id="signup-username" placeholder="Username" />'+
+	  					'<input type="password" id="signup-password" placeholder="Create a Password" />'+
+	  					'<button>Sign Up</button>'+
+					'</form>'+
+  				'</div>';
+  
+      		this.$el.html(_.template(sTemplate));
       		this.$el.find('button').button();
       		this.delegateEvents();
     	}
@@ -115,7 +128,24 @@ var WelcomeView = Parse.View.extend({
     },
 
     render: function() {
-      this.$el.html(_.template($("#login-template").html()));
+    
+      	var sTemplate;
+      
+      	sTemplate='<header id="header"></header>'+
+  			'<div class="login">'+
+				'<form class="login-form">'+
+	  				'<h2>Log In</h2>'+
+	  				'<div class="error" style="display:none"></div>'+
+	  				'<input type="text" id="login-username" placeholder="Username" />'+
+	 				'<input type="password" id="login-password" placeholder="Password" />'+
+	  				'<button>Log In</button>'+
+				'</form>'+
+				'<div class="signup">'+
+  					'<button class="signup-button">Sign Up</button>'+
+  				'</div>'+
+  			'</div>';
+
+      this.$el.html(_.template(sTemplate));
       this.$el.find('button').button();
       this.delegateEvents();
     }
