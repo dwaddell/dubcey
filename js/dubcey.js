@@ -6,6 +6,28 @@ $(document).ready( function ()
 	// ACW 9/3/13 Moved the initialize code to the .ready function
 	Parse.initialize("8SyaVoZSUSwjTpFrq8i4o8otPRbWMLXZ7PtEAgMR", "S7SGiM2ApbQpRkVZn7ixXoMjLkoM9y6SPGo8pdvl");
 
+var WelcomeView = Parse.View.extend({
+	events		: {},
+	
+	el			: $('.content'),
+	
+	initialize	: function ()
+				  {
+					this.render();
+				  },
+	
+	render 		: function ()
+				  {
+				  	var sTemplate;
+				  	
+				  	sTemplate = "<div>Welcome Page</div>";
+				  				  	
+					this.$el.html(_.template(sTemplate));
+      				this.$el.find('button').button();
+      				this.delegateEvents();
+				  }	
+});
+
  var SignUpView = Parse.View.extend({
  	events:{
  		"submit form.signup-form": "signUp"
@@ -19,34 +41,34 @@ $(document).ready( function ()
     	},
  		
  		signUp: function(e) {
- 		console.log("We want to sign up!");	
- 			/*      var self = this;
-      var username = this.$("#signup-username").val();
-      var password = this.$("#signup-password").val();
+ 			console.log("We want to sign up!");	
+ 			var self = this;
+      		var username = this.$("#signup-username").val();
+      		var password = this.$("#signup-password").val();
       
-      Parse.User.signUp(username, password, { ACL: new Parse.ACL() }, {
-        success: function(user) {
-          new ManageTodosView();
-          self.undelegateEvents();
-          delete self;
-        },
+      		Parse.User.signUp(username, password, { ACL: new Parse.ACL() }, {
+        		success: function(user) {
+          			new WelcomeView();
+          			self.undelegateEvents();
+          			delete self;
+        			},
 
-        error: function(user, error) {
-          self.$(".signup-form .error").html(error.message).show();
-          this.$(".signup-form button").removeAttr("disabled");
-        }
-      });
+        		error: function(user, error) {
+          			self.$(".signup-form .error").html(error.message).show();
+          			this.$(".signup-form button").removeAttr("disabled");
+        			}
+      		});
 
-      this.$(".signup-form button").attr("disabled", "disabled");
-*/
- 			},
+      		this.$(".signup-form button").attr("disabled", "disabled");
+
+ 		},
  			
- 	  render: function() {
-      this.$el.html(_.template($("#signup-template").html()));
-      this.$el.find('button').button();
-      this.delegateEvents();
-    }
- 			});
+ 	  	render: function() {
+      		this.$el.html(_.template($("#signup-template").html()));
+      		this.$el.find('button').button();
+      		this.delegateEvents();
+    	}
+ });
  				
  var LogInView = Parse.View.extend({
     events: {
@@ -68,7 +90,7 @@ $(document).ready( function ()
       
       Parse.User.logIn(username, password, {
         success: function(user) {
-          new ManageTodosView();
+          new WelcomeView();
           self.undelegateEvents();
           delete self;
         },
