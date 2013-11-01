@@ -10,7 +10,7 @@ $(document).ready( function ()
  var LogInView = Parse.View.extend({
     events: {
       "submit form.login-form": "logIn",
-      "click button.signup-form": "signUp"
+      "click button.signup-button": "signUp"
     },
 
     el: $(".content"),
