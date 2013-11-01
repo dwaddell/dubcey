@@ -19,7 +19,7 @@ $(document).ready( function ()
     	},
  		
  		signUp: function(e) {
- 			
+ 		console.log("We want to sign up!");	
  			/*      var self = this;
       var username = this.$("#signup-username").val();
       var password = this.$("#signup-password").val();
@@ -43,6 +43,7 @@ $(document).ready( function ()
  			
  	  render: function() {
       this.$el.html(_.template($("#signup-template").html()));
+      this.$el.find('button').button();
       this.delegateEvents();
     }
  			});
