@@ -6,7 +6,46 @@ $(document).ready( function ()
 	// ACW 9/3/13 Moved the initialize code to the .ready function
 	Parse.initialize("8SyaVoZSUSwjTpFrq8i4o8otPRbWMLXZ7PtEAgMR", "S7SGiM2ApbQpRkVZn7ixXoMjLkoM9y6SPGo8pdvl");
 
-	
+ var SignUpView = Parse.View.extend({
+ 	events:{
+ 		"submit form.signup-form": "signUp"
+ 		},
+ 		
+ 		el: $(".content"),
+ 		
+ 		initialize: function() {
+      	  _.bindAll(this, "signUp");
+          this.render();
+    	},
+ 		
+ 		signUp: function(e) {
+ 			
+ 			/*      var self = this;
+      var username = this.$("#signup-username").val();
+      var password = this.$("#signup-password").val();
+      
+      Parse.User.signUp(username, password, { ACL: new Parse.ACL() }, {
+        success: function(user) {
+          new ManageTodosView();
+          self.undelegateEvents();
+          delete self;
+        },
+
+        error: function(user, error) {
+          self.$(".signup-form .error").html(error.message).show();
+          this.$(".signup-form button").removeAttr("disabled");
+        }
+      });
+
+      this.$(".signup-form button").attr("disabled", "disabled");
+*/
+ 			}
+ 	  render: function() {
+      this.$el.html(_.template($("#signup-template").html()));
+      this.delegateEvents();
+    }
+ 			});
+ 				
  var LogInView = Parse.View.extend({
     events: {
       "submit form.login-form": "logIn",
@@ -44,26 +83,10 @@ $(document).ready( function ()
     },
 
     signUp: function(e) {
-/*      var self = this;
-      var username = this.$("#signup-username").val();
-      var password = this.$("#signup-password").val();
-      
-      Parse.User.signUp(username, password, { ACL: new Parse.ACL() }, {
-        success: function(user) {
-          new ManageTodosView();
-          self.undelegateEvents();
-          delete self;
-        },
-
-        error: function(user, error) {
-          self.$(".signup-form .error").html(error.message).show();
-          this.$(".signup-form button").removeAttr("disabled");
-        }
-      });
-
-      this.$(".signup-form button").attr("disabled", "disabled");
-*/
-console.log("I CLICKED THE BUTTON");
+  		new SignUpView();
+  		self.undelegateEvents();
+        delete self;
+          
       return false;
     },
 
