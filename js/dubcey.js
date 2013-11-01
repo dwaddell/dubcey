@@ -110,6 +110,7 @@ $(document).ready( function ()
     render: function() {
       if (Parse.User.current()) {
       	alert("we have a user!"); //  new ManageTodosView();
+      	Parse.User.logOut();
       } else {
         new LogInView();
       }
