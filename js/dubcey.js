@@ -1,7 +1,7 @@
 // ACW 9/3/13 #1 The beginning, this file will start it all
 $(document).ready( function ()
 {
-	Parse.$ = jQuery;
+	//Parse.$ = jQuery;
 
 	// ACW 9/3/13 Moved the initialize code to the .ready function
 	Parse.initialize("8SyaVoZSUSwjTpFrq8i4o8otPRbWMLXZ7PtEAgMR", "S7SGiM2ApbQpRkVZn7ixXoMjLkoM9y6SPGo8pdvl");
@@ -13,7 +13,7 @@ $(document).ready( function ()
       "submit form.signup-form": "signUp"
     },
 
-    el: ".content",
+    el: $(".content"),
     
     initialize: function() {
       _.bindAll(this, "logIn", "signUp");
