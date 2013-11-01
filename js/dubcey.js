@@ -93,6 +93,7 @@ $(document).ready( function ()
 
     render: function() {
       this.$el.html(_.template($("#login-template").html()));
+      this.$el.find('button').button();
       this.delegateEvents();
     }
   });
