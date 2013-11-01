@@ -13,7 +13,7 @@ $(document).ready( function ()
 	else 
 	{
 	    // Show Login page
-		alert("show login");
+		alert("Hello World");
 	}
 	
 	// var TestObject = Parse.Object.extend("TestObject");
