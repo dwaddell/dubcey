@@ -85,8 +85,8 @@ $(document).ready( function ()
 
     signUp: function(e) {
   		new SignUpView();
-  		self.undelegateEvents();
-        delete self;
+  		this.undelegateEvents();
+        delete this;
           
       return false;
     },
