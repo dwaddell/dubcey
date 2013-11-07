@@ -1,7 +1,7 @@
 // ACW 9/3/13 #1 The beginning, this file will start it all
 $(document).ready( function ()
 {
-	//Parse.$ = jQuery;
+	Parse.$ = jQuery; // ACW 11/7/13 I am not sure if this is needed, better safe than sorry for now
 
 	// ACW 9/3/13 Moved the initialize code to the .ready function
 	Parse.initialize("8SyaVoZSUSwjTpFrq8i4o8otPRbWMLXZ7PtEAgMR", "S7SGiM2ApbQpRkVZn7ixXoMjLkoM9y6SPGo8pdvl");
@@ -171,6 +171,27 @@ var WelcomeView = Parse.View.extend({
     }
   });
   
-   new AppView;
-//   Parse.history.start();
+  
+  
+  var AppRouter = Parse.Router.extend({
+    routes: {
+      "": "index",
+      "signUp": "signUp"
+    },
+
+    initialize: function(options) {
+    },
+
+    index: function() {
+      console.log("we are on the index page");
+      },
+
+    signUp: function() {
+      //new SignUpView();
+    }
+  });
+  
+  new AppRouter;
+  new AppView;
+  Parse.history.start();
 });
