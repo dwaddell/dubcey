@@ -120,10 +120,11 @@ var WelcomeView = Parse.View.extend({
     },
 
     signUp: function(e) {
-  		oRouter.navigate('signUp', true); //new SignUpView();
   		this.undelegateEvents();
       delete this;
-          
+      
+      oRouter.navigate('signUp', true); //new SignUpView();
+    
       return false;
     },
 
@@ -162,6 +163,7 @@ var WelcomeView = Parse.View.extend({
     },
 
     index: function() {
+      console.log(arguments);
       new LogInView();
       console.log("we are on the index page");
       },
