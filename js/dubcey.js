@@ -120,7 +120,7 @@ var WelcomeView = Parse.View.extend({
     },
 
     signUp: function(e) {
-  		AppRouter.navigate('signUp'); //new SignUpView();
+  		oRouter.navigate('signUp'); //new SignUpView();
   		this.undelegateEvents();
       delete this;
           
@@ -194,7 +194,7 @@ var WelcomeView = Parse.View.extend({
     }
   });
   
-  new AppRouter;
+  oRouter = new AppRouter();
   new AppView;
   Parse.history.start();
 });
