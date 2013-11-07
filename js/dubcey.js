@@ -120,9 +120,9 @@ var WelcomeView = Parse.View.extend({
     },
 
     signUp: function(e) {
-  		new SignUpView();
+  		AppRouter.navigate('signUp'); //new SignUpView();
   		this.undelegateEvents();
-        delete this;
+      delete this;
           
       return false;
     },
@@ -166,8 +166,8 @@ var WelcomeView = Parse.View.extend({
       	alert("we have a user!"); //  new ManageTodosView();
       	Parse.User.logOut();
       } else {
-        AppRouter.navigate('');
-        //new LogInView();
+        //AppRouter.navigate('');
+        new LogInView();
       }
     }
   });
@@ -184,12 +184,13 @@ var WelcomeView = Parse.View.extend({
     },
 
     index: function() {
-      new LogInView();
+      //new LogInView();
       console.log("we are on the index page");
       },
 
     signUp: function() {
-      //new SignUpView();
+      new SignUpView();
+      console.log("did we make it to sign up?");
     }
   });
   
