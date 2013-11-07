@@ -120,7 +120,7 @@ var WelcomeView = Parse.View.extend({
     },
 
     signUp: function(e) {
-  		oRouter.navigate('signUp'); //new SignUpView();
+  		oRouter.navigate('signUp', true); //new SignUpView();
   		this.undelegateEvents();
       delete this;
           
