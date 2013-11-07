@@ -166,7 +166,8 @@ var WelcomeView = Parse.View.extend({
       	alert("we have a user!"); //  new ManageTodosView();
       	Parse.User.logOut();
       } else {
-        new LogInView();
+        AppRouter.navigate('');
+        //new LogInView();
       }
     }
   });
@@ -183,6 +184,7 @@ var WelcomeView = Parse.View.extend({
     },
 
     index: function() {
+      new LogInView();
       console.log("we are on the index page");
       },
 
