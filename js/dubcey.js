@@ -152,6 +152,27 @@ var WelcomeView = Parse.View.extend({
   });
 
 
+  var AppRouter = Parse.Router.extend({
+    routes: {
+      "": "index",
+      "signUp": "signUp"
+    },
+
+    initialize: function(options) {
+    },
+
+    index: function() {
+      new LogInView();
+      console.log("we are on the index page");
+      },
+
+    signUp: function() {
+      new SignUpView();
+      console.log("did we make it to sign up?");
+    }
+  });
+    oRouter = new AppRouter();
+
   var AppView = Parse.View.extend({
     // Instead of generating a new element, bind to the existing skeleton of
     // the App already present in the HTML.
@@ -166,35 +187,16 @@ var WelcomeView = Parse.View.extend({
       	alert("we have a user!"); //  new ManageTodosView();
       	Parse.User.logOut();
       } else {
-        //AppRouter.navigate('');
-        new LogInView();
+        oRouter.navigate('', true);
+        //new LogInView();
       }
     }
   });
   
   
   
-  var AppRouter = Parse.Router.extend({
-    routes: {
-      "": "index",
-      "signUp": "signUp"
-    },
 
-    initialize: function(options) {
-    },
 
-    index: function() {
-      //new LogInView();
-      console.log("we are on the index page");
-      },
-
-    signUp: function() {
-      new SignUpView();
-      console.log("did we make it to sign up?");
-    }
-  });
-  
-  oRouter = new AppRouter();
   new AppView;
   Parse.history.start();
 });
