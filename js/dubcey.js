@@ -170,7 +170,7 @@ $(document).ready( function ()
 
   var AppRouter = Parse.Router.extend({
     routes      : {
-                    "index": "index",
+                    "": "index",
                     "welcome" : "index",
                     "signUp": "signUp"
                   },  
@@ -214,7 +214,7 @@ $(document).ready( function ()
 
     render      : function() 
                   {
-                   oRouter.navigate('index', true);
+                   oRouter.navigate('', true);
                  }
   });
 
