@@ -6,27 +6,35 @@ $(document).ready( function ()
 	// ACW 9/3/13 Moved the initialize code to the .ready function
 	Parse.initialize("8SyaVoZSUSwjTpFrq8i4o8otPRbWMLXZ7PtEAgMR", "S7SGiM2ApbQpRkVZn7ixXoMjLkoM9y6SPGo8pdvl");
 
-var WelcomeView = Parse.View.extend({
-	events		: {},
-	
-	el			: $('.content'),
-	
-	initialize	: function ()
-				  {
-					this.render();
-				  },
-	
-	render 		: function ()
-				  {
-				  	var sTemplate;
-				  	
-				  	sTemplate = "<div>Welcome Page</div>";
-				  				  	
-					this.$el.html(_.template(sTemplate));
-      				this.$el.find('button').button();
-      				this.delegateEvents();
-				  }	
-});
+  var WelcomeView = Parse.View.extend({
+    events		  : {
+                    'click button#logoutButton' : 'logout'
+                  },
+  
+    el			    : $('.content'),
+  
+    initialize	: function ()
+                  {
+                    this.render();
+                  },
+  
+    logout      : {
+                    Parse.user.logOut(); // Logout the user
+                    oRouter.navigate('', true); // Navigate back to the home page
+                  },
+  
+    render  		: function ()
+                  {
+                    var sTemplate;
+            
+                    sTemplate = '<div>Welcome Page</div>'
+                                 + '<div><button id="logoutButton">Logout</button></div>';
+                      
+                    this.$el.html(_.template(sTemplate));
+                    this.$el.find('button').button();
+                    this.delegateEvents();
+                  }	
+  });
 
  var SignUpView = Parse.View.extend({
  	events:{
@@ -103,9 +111,10 @@ var WelcomeView = Parse.View.extend({
       
       Parse.User.logIn(username, password, {
         success: function(user) {
-          new WelcomeView();
+          // new WelcomeView();
           self.undelegateEvents();
           delete self;
+          oRouter.navigate('', true);
         },
 
         error: function(user, error) {
@@ -154,26 +163,37 @@ var WelcomeView = Parse.View.extend({
 
 
   var AppRouter = Parse.Router.extend({
-    routes: {
-      "": "index",
-      "signUp": "signUp"
-    },
+    routes      : {
+                    "": "index",
+                    "signUp": "signUp"
+                  },  
 
-    initialize: function(options) {
-    },
+    initialize  : function(options) 
+                  {
+                  },
 
-    index: function() {
-      console.log(arguments);
-      new LogInView();
-      console.log("we are on the index page");
-      },
+    index       : function() 
+                  {
+                    if (Parse.User.current()) 
+                    {
+                      alert("we have a user!"); //  new ManageTodosView();
+                      new WelcomeView();
+                    } 
+                    else 
+                    {
+                      console.log(arguments);
+                      new LogInView();
+                      console.log("we are on the index page");
+                    }
+                  },
 
-    signUp: function() {
-      new SignUpView();
-      console.log("did we make it to sign up?");
-    }
+    signUp      : function() 
+                  {
+                    new SignUpView();
+                    console.log("did we make it to sign up?");
+                  }
   });
-    oRouter = new AppRouter();
+  var oRouter = new AppRouter();
 
   var AppView = Parse.View.extend({
     // Instead of generating a new element, bind to the existing skeleton of
@@ -184,15 +204,10 @@ var WelcomeView = Parse.View.extend({
       this.render();
     },
 
-    render: function() {
-      if (Parse.User.current()) {
-      	alert("we have a user!"); //  new ManageTodosView();
-      	Parse.User.logOut();
-      } else {
-        oRouter.navigate('', true);
-        //new LogInView();
-      }
-    }
+    render    : function() 
+                {
+                  oRouter.navigate('', true);
+                }
   });
   
   
