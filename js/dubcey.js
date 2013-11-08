@@ -21,7 +21,8 @@ $(document).ready( function ()
     logout      : function () 
                   {
                     Parse.User.logOut(); // Logout the user
-                    oRouter.navigate('', true); // Navigate back to the home page
+                    //window.reload();
+                    oRouter.navigate('index', true); // Navigate back to the home page
                   },
   
     render  		: function ()
@@ -118,7 +119,7 @@ $(document).ready( function ()
                         // new WelcomeView();
                         self.undelegateEvents();
                         delete self;
-                        oRouter.navigate('', true);
+                        oRouter.navigate('welcome', true);
                       },
 
                       error: function(user, error) {
@@ -169,7 +170,8 @@ $(document).ready( function ()
 
   var AppRouter = Parse.Router.extend({
     routes      : {
-                    "": "index",
+                    "index": "index",
+                    "welcome" : "index",
                     "signUp": "signUp"
                   },  
 
@@ -212,7 +214,7 @@ $(document).ready( function ()
 
     render      : function() 
                   {
-                   oRouter.navigate('', true);
+                   oRouter.navigate('index', true);
                  }
   });
 
