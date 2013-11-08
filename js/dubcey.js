@@ -19,7 +19,7 @@ $(document).ready( function ()
                   },
   
     logout      : {
-                    Parse.user.logOut(); // Logout the user
+                    Parse.User.logOut(); // Logout the user
                     oRouter.navigate('', true); // Navigate back to the home page
                   },
   
