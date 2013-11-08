@@ -21,8 +21,9 @@ $(document).ready( function ()
     logout      : function () 
                   {
                     Parse.User.logOut(); // Logout the user
-                    //window.reload();
-                    oRouter.navigate('index', true); // Navigate back to the home page
+                    window.hash = '';
+                    window.reload();
+                    //oRouter.navigate('', true); // Navigate back to the home page
                   },
   
     render  		: function ()
@@ -171,7 +172,7 @@ $(document).ready( function ()
   var AppRouter = Parse.Router.extend({
     routes      : {
                     "": "index",
-                    "welcome" : "index",
+                    "/welcome" : "index",
                     "signUp": "signUp"
                   },  
 
