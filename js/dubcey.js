@@ -18,7 +18,8 @@ $(document).ready( function ()
                     this.render();
                   },
   
-    logout      : {
+    logout      : function () 
+                  {
                     Parse.User.logOut(); // Logout the user
                     oRouter.navigate('', true); // Navigate back to the home page
                   },
