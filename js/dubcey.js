@@ -35,7 +35,7 @@ var Dubcey = {
 			
 						sTemplate = '<div>Welcome Page</div>'
 									 + '<div><button id="logoutButton">Logout</button></div>';
-					  
+						console.log("WELCOME");
 						this.$el.html(_.template(sTemplate));
 						this.$el.find('button').button();
 						this.delegateEvents();
