@@ -43,7 +43,7 @@ $(document).ready( function ()
                   }	
   });
 
- var SignUpView = Parse.View.extend({
+  Dubcey.Views.SignUpView = Parse.View.extend({
   events        : {
  		                "submit form.signup-form": "signUp"
  		              },
@@ -99,7 +99,7 @@ $(document).ready( function ()
     	            }
  });
  				
- var LogInView = Parse.View.extend({
+  Dubce.Views.LogInView = Parse.View.extend({
     events      : {
                     "submit form.login-form": "logIn",
                     "click button.signup-button": "signUp"
@@ -173,7 +173,7 @@ $(document).ready( function ()
   });
 
 
-  var AppRouter = Parse.Router.extend({
+  Dubcey.AppRouter = Parse.Router.extend({
     routes      : {
                     "": "index",
                     "welcome" : "index",
@@ -207,7 +207,7 @@ $(document).ready( function ()
   });
   var oRouter = new AppRouter();
 
-  var AppView = Parse.View.extend({
+  Dubcey.Views.AppView = Parse.View.extend({
     // Instead of generating a new element, bind to the existing skeleton of
     // the App already present in the HTML.
     el          : $("#dubcey"),
