@@ -7,10 +7,8 @@ $(document).ready( function ()
 	Parse.initialize("8SyaVoZSUSwjTpFrq8i4o8otPRbWMLXZ7PtEAgMR", "S7SGiM2ApbQpRkVZn7ixXoMjLkoM9y6SPGo8pdvl");
   var Dubcey = {
     Models:{},
-    Views:{},
-    Collections:{}
-  }
-  Dubcey.Views.WelcomeView = Parse.View.extend({
+    Views:{
+Dubcey.Views.WelcomeView = Parse.View.extend({
     events		  : {
                     'click button#logoutButton' : 'logout'
                   },
@@ -172,8 +170,27 @@ $(document).ready( function ()
                 }
   });
 
+Dubcey.Views.AppView = Parse.View.extend({
+    // Instead of generating a new element, bind to the existing skeleton of
+    // the App already present in the HTML.
+    el          : $("#dubcey"),
 
-  Dubcey.AppRouter = Parse.Router.extend({
+    initialize  : function() 
+                  {
+                    this.render();
+                  },
+
+    render      : function() 
+                  {
+                   oRouter.navigate('', true);
+                 }
+  });
+
+
+    },
+    Collections:{}
+    
+      Dubcey.AppRouter = Parse.Router.extend({
     routes      : {
                     "": "index",
                     "welcome" : "index",
@@ -204,25 +221,12 @@ $(document).ready( function ()
                     new SignUpView();
                     console.log("did we make it to sign up?");
                   }
-  });
-  var oRouter = new AppRouter();
+  });    
+  }
+  
+  var oRouter = new Dubcey.AppRouter();
 
-  Dubcey.Views.AppView = Parse.View.extend({
-    // Instead of generating a new element, bind to the existing skeleton of
-    // the App already present in the HTML.
-    el          : $("#dubcey"),
-
-    initialize  : function() 
-                  {
-                    this.render();
-                  },
-
-    render      : function() 
-                  {
-                   oRouter.navigate('', true);
-                 }
-  });
-
-  new AppView;
+  
+  new Dubcey.Views.AppView;
   Parse.history.start();
 });
