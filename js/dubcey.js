@@ -5,10 +5,8 @@ $(document).ready( function ()
 
 	// ACW 9/3/13 Moved the initialize code to the .ready function
 	Parse.initialize("8SyaVoZSUSwjTpFrq8i4o8otPRbWMLXZ7PtEAgMR", "S7SGiM2ApbQpRkVZn7ixXoMjLkoM9y6SPGo8pdvl");
-  var Dubcey = Parse.View.extend({
-    Models:{},
-    Views:{
-Dubcey.Views.WelcomeView = Parse.View.extend({
+
+  var WelcomeView = Parse.View.extend({
     events		  : {
                     'click button#logoutButton' : 'logout'
                   },
@@ -41,7 +39,7 @@ Dubcey.Views.WelcomeView = Parse.View.extend({
                   }	
   });
 
-  Dubcey.Views.SignUpView = Parse.View.extend({
+ var SignUpView = Parse.View.extend({
   events        : {
  		                "submit form.signup-form": "signUp"
  		              },
@@ -97,7 +95,7 @@ Dubcey.Views.WelcomeView = Parse.View.extend({
     	            }
  });
  				
-  Dubcey.Views.LogInView = Parse.View.extend({
+ var LogInView = Parse.View.extend({
     events      : {
                     "submit form.login-form": "logIn",
                     "click button.signup-button": "signUp"
@@ -170,27 +168,8 @@ Dubcey.Views.WelcomeView = Parse.View.extend({
                 }
   });
 
-Dubcey.Views.AppView = Parse.View.extend({
-    // Instead of generating a new element, bind to the existing skeleton of
-    // the App already present in the HTML.
-    el          : $("#dubcey"),
 
-    initialize  : function() 
-                  {
-                    this.render();
-                  },
-
-    render      : function() 
-                  {
-                   oRouter.navigate('', true);
-                 }
-  });
-
-
-    },
-    Collections:{}
-    
-      Dubcey.AppRouter = Parse.Router.extend({
+  var AppRouter = Parse.Router.extend({
     routes      : {
                     "": "index",
                     "welcome" : "index",
@@ -221,12 +200,25 @@ Dubcey.Views.AppView = Parse.View.extend({
                     new SignUpView();
                     console.log("did we make it to sign up?");
                   }
-  });    
   });
-  
-  var oRouter = new Dubcey.AppRouter();
+  var oRouter = new AppRouter();
 
-  
-  new Dubcey.Views.AppView;
+  var AppView = Parse.View.extend({
+    // Instead of generating a new element, bind to the existing skeleton of
+    // the App already present in the HTML.
+    el          : $("#dubcey"),
+
+    initialize  : function() 
+                  {
+                    this.render();
+                  },
+
+    render      : function() 
+                  {
+                   oRouter.navigate('', true);
+                 }
+  });
+
+  new AppView;
   Parse.history.start();
 });
