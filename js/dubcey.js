@@ -99,7 +99,7 @@ $(document).ready( function ()
     	            }
  });
  				
-  Dubce.Views.LogInView = Parse.View.extend({
+  Dubcey.Views.LogInView = Parse.View.extend({
     events      : {
                     "submit form.login-form": "logIn",
                     "click button.signup-button": "signUp"
