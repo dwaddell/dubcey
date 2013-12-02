@@ -5,7 +5,7 @@ $(document).ready( function ()
 
 	// ACW 9/3/13 Moved the initialize code to the .ready function
 	Parse.initialize("8SyaVoZSUSwjTpFrq8i4o8otPRbWMLXZ7PtEAgMR", "S7SGiM2ApbQpRkVZn7ixXoMjLkoM9y6SPGo8pdvl");
-  var Dubcey = {
+  var Dubcey = Parse.View.extend({
     Models:{},
     Views:{
 Dubcey.Views.WelcomeView = Parse.View.extend({
@@ -222,7 +222,7 @@ Dubcey.Views.AppView = Parse.View.extend({
                     console.log("did we make it to sign up?");
                   }
   });    
-  }
+  });
   
   var oRouter = new Dubcey.AppRouter();
 
