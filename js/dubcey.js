@@ -192,7 +192,7 @@ var Dubcey = {
   Collections: {},
   
   
-  var AppRouter = Parse.Router.extend({
+  Dubcey.AppRouter = Parse.Router.extend({
     routes      : {
                     "": "index",
                     "welcome" : "index",
@@ -209,19 +209,19 @@ var Dubcey = {
                     if (Parse.User.current()) 
                     {
                       alert("we have a user!"); //  new ManageTodosView();
-                      new WelcomeView();
+                      new Dubcey.Views.WelcomeView();
                     } 
                     else 
                     {
                       console.log(arguments);
-                      new LogInView();
+                      new Dubcey.Views.LogInView();
                       console.log("we are on the index page");
                     }
                   },
 
     signUp      : function() 
                   {
-                    new SignUpView();
+                    new Dubcey.Views.SignUpView();
                     console.log("did we make it to sign up?");
                   }
     dashBoard	: function()
