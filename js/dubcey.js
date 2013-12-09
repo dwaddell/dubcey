@@ -236,8 +236,19 @@ $(document).ready( function ()
                   },
     dashBoard	: function()
     			  {
-    			    new DashBoardView();
-    			    console.log("DASHBOARD VIEW");
+    			    if (Parse.User.current()) 
+                    {
+                      alert("Welcome to the dubcey dash!"); //  new ManageTodosView();
+                      new DashBoardView();
+    			      console.log("DASHBOARD VIEW");
+                    } 
+                    else 
+                    {
+                      console.log(arguments);
+                      new LogInView();
+                      console.log("we are on the index page");
+                    }
+    			    
     			  }              
   });
   var oRouter = new AppRouter();
