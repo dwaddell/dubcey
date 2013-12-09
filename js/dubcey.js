@@ -186,7 +186,7 @@ $(document).ready( function ()
                     Parse.User.logOut(); // Logout the user
                    // window.hash = '';
                     //window.reload();
-                    //oRouter.navigate('', true); // Navigate back to the home page
+                    oRouter.navigate('', true); // Navigate back to the home page
                   },
   
     render  		: function ()
