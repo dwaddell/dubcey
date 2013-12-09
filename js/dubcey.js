@@ -39,7 +39,7 @@ $(document).ready( function ()
                   }	
   });
 
- var SignUpView = Parse.View.extend({
+  var SignUpView = Parse.View.extend({
   events        : {
  		                "submit form.signup-form": "signUp"
  		              },
@@ -95,7 +95,7 @@ $(document).ready( function ()
     	            }
  });
  				
- var LogInView = Parse.View.extend({
+  var LogInView = Parse.View.extend({
     events      : {
                     "submit form.login-form": "logIn",
                     "click button.signup-button": "signUp"
@@ -120,7 +120,8 @@ $(document).ready( function ()
                         // new WelcomeView();
                         self.undelegateEvents();
                         delete self;
-                        oRouter.navigate('welcome', true);
+                        //oRouter.navigate('welcome', true);
+                        oRouter.navigate('dashBoard', true);// Changed to dashboard
                       },
 
                       error: function(user, error) {
@@ -168,12 +169,44 @@ $(document).ready( function ()
                 }
   });
 
-
+  var DashBoardView = Parse.View.extend({
+  	events		  : {
+                    'click button#logoutButton' : 'logout'
+                  },
+  
+    el			    : $('.content'),
+  
+    initialize	: function ()
+                  {
+                    this.render();
+                  },
+  
+    logout      : function () 
+                  {
+                    Parse.User.logOut(); // Logout the user
+                   // window.hash = '';
+                    //window.reload();
+                    //oRouter.navigate('', true); // Navigate back to the home page
+                  },
+  
+    render  		: function ()
+                  {
+                    var sTemplate;
+            
+                    sTemplate = '<div>Dashboard Page</div>'
+                                 + '<div><button id="logoutButton">Logout</button></div>';
+                      
+                    this.$el.html(_.template(sTemplate));
+                    this.$el.find('button').button();
+                    this.delegateEvents();
+                  }	
+  });
   var AppRouter = Parse.Router.extend({
     routes      : {
                     "": "index",
                     "welcome" : "index",
-                    "signUp": "signUp"
+                    "signUp": "signUp",
+                    "dashBoard": "dashBoard"
                   },  
 
     initialize  : function(options) 
@@ -199,7 +232,12 @@ $(document).ready( function ()
                   {
                     new SignUpView();
                     console.log("did we make it to sign up?");
-                  }
+                  },
+    dashBoard	: function()
+    			  {
+    			    new DashBoardView();
+    			    console.log("DASHBOARD VIEW");
+    			  }              
   });
   var oRouter = new AppRouter();
 
