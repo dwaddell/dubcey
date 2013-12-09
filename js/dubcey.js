@@ -183,6 +183,7 @@ $(document).ready( function ()
   
     logout      : function () 
                   {
+                    console.log("LOGOUT CLICKED");
                     Parse.User.logOut(); // Logout the user
                    // window.hash = '';
                     //window.reload();
